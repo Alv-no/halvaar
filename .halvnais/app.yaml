@@ -2,6 +2,9 @@
 # Før første utrulling: legg de to hemmelighetene i appens vault (se README).
 # Dev-klyngen har egne tider for prøvekjøring i alv-dev.app.yaml.
 name: halvaar
+# Eierteam. Bare teamet (og plattformadmin) ser appen og loggene i dashbordet og Grafana,
+# og bare teamet kan sette hemmelighetene fra dashbordet.
+team: [marcus@alv.no]
 # Telemetri er slått av med vilje. Automatisk sporing kan fange opp innholdet i forespørsler,
 # og svarene skal ikke ligge noe annet sted enn i køen og i Airtable.
 telemetry:
