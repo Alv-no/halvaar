@@ -1,0 +1,643 @@
+{
+ "runde": "2027-01",
+ "tittel": "Halvårsundersøkelsen",
+ "periode": "Januar 2027",
+ "likert": [
+  "Helt enig",
+  "Delvis enig",
+  "Hverken enig eller uenig",
+  "Delvis uenig",
+  "Helt uenig"
+ ],
+ "deler": [
+  {
+   "tittel": "Trivsel og selskap",
+   "ingress": "Hvordan du har det i Alv, og hvordan selskapet drives.",
+   "sporsmal": [
+    {
+     "kode": "SEL-02",
+     "tekst": "Jeg trives i Alv",
+     "felt": "Jeg trives i Alv",
+     "type": "likert",
+     "feltId": "fld6mipiu3DzmQNza"
+    },
+    {
+     "kode": "SEL-17",
+     "tekst": "Jeg ville anbefalt Alv som arbeidsplass til en dyktig venn",
+     "felt": "Jeg ville anbefalt Alv som arbeidsplass til en dyktig venn",
+     "type": "likert",
+     "feltId": "fld0xUo3dkFQIF4sP"
+    },
+    {
+     "kode": "SEL-01",
+     "tekst": "Jeg vurderer å bytte jobb de neste 12 månedene",
+     "felt": "Jeg vurderer å bytte jobb de neste 12 månedene",
+     "type": "likert",
+     "feltId": "fldHbtEOjBCEV2iRE"
+    },
+    {
+     "kode": "SEL-15",
+     "tekst": "Jeg har gode utviklingsmuligheter i Alv",
+     "felt": "Jeg har gode utviklingsmuligheter i Alv",
+     "type": "likert",
+     "feltId": "fld9sVZl7GVWLT9TD"
+    },
+    {
+     "kode": "SEL-14",
+     "tekst": "Jeg har god kontakt og får god oppfølging av min personalleder i Alv",
+     "felt": "Jeg har god kontakt og får god oppfølging av min personalleder i Alv",
+     "type": "likert",
+     "feltId": "fld7CTGJEJ5fZYuLd"
+    },
+    {
+     "kode": "SEL-08",
+     "tekst": "Jeg føler jeg har mulighet til å være med å påvirke beslutninger som blir tatt i selskapet",
+     "felt": "Jeg føler jeg har mulighet til å være med å påvirke beslutninger som blir tatt i selskapet",
+     "type": "likert",
+     "feltId": "fldpQSrZlYm32LLp3"
+    },
+    {
+     "kode": "SEL-13",
+     "tekst": "Administrasjonen i Alv gjør en god jobb",
+     "felt": "Administrasjonen i Alv gjør en god jobb",
+     "type": "likert",
+     "feltId": "fldmTb36vSBhoWD2f"
+    },
+    {
+     "kode": "SEL-10",
+     "tekst": "Alv burde kutte i administrasjonen, og heller ha flere ute og fakturere",
+     "felt": "Alv burde kutte i administrasjonen, og heller ha flere ute og fakturere",
+     "type": "likert",
+     "feltId": "fldXpqaNvjhLRGl8O"
+    },
+    {
+     "kode": "SEL-16",
+     "tekst": "Kommentarer og/eller forslag til trivsel og selskap",
+     "felt": "Kommentarer og/eller forslag til trivsel og selskap",
+     "type": "tekst",
+     "feltId": "fldJSrW53bxx2SAAb"
+    }
+   ]
+  },
+  {
+   "tittel": "Oppdrag",
+   "ingress": "Oppdraget du er i, og tiden mellom oppdrag.",
+   "sporsmal": [
+    {
+     "kode": "OPP-06",
+     "tekst": "Jeg trives i oppdraget jeg er i",
+     "felt": "Jeg trives i oppdraget jeg er i",
+     "type": "likert",
+     "ekstra": [
+      "Jeg er mellom oppdrag"
+     ],
+     "feltId": "fldMtSd2toFukLCTb"
+    },
+    {
+     "kode": "OPP-04",
+     "tekst": "Jeg føler meg sett og hørt fra Alv sin side om hvordan jeg har det i oppdraget mitt?",
+     "felt": "Jeg føler meg sett og hørt fra Alv sin side om hvordan jeg har det i oppdraget mitt?",
+     "type": "likert",
+     "feltId": "fld7Ipgu19TSxdtCC"
+    },
+    {
+     "kode": "OPP-08",
+     "tekst": "Alv er flinke til å finne riktig oppdrag til riktig konsulent",
+     "felt": "Alv er flinke til å finne riktig oppdrag til riktig konsulent",
+     "type": "likert",
+     "feltId": "fldT2cOSlQXS1FB0y"
+    },
+    {
+     "kode": "OPP-12",
+     "tekst": "Jeg er trygg på at Alv finner et nytt oppdrag til meg når jeg trenger det",
+     "felt": "Jeg er trygg på at Alv finner et nytt oppdrag til meg når jeg trenger det",
+     "type": "likert",
+     "feltId": "fldNkqaHIjOcBG6W0"
+    },
+    {
+     "kode": "OPP-11",
+     "tekst": "Tiden mellom oppdrag blir brukt på en god måte",
+     "felt": "Tiden mellom oppdrag blir brukt på en god måte",
+     "type": "likert",
+     "ekstra": [
+      "Har ikke vært mellom oppdrag det siste året"
+     ],
+     "feltId": "fldHZJCec5kalmS1x"
+    },
+    {
+     "kode": "OPP-10",
+     "tekst": "Kommentarer og/eller forslag til oppdrag",
+     "felt": "Kommentarer og/eller forslag til oppdrag",
+     "type": "tekst",
+     "feltId": "fldY5WKZjKCbDYB9E"
+    }
+   ]
+  },
+  {
+   "tittel": "Arbeidshverdag",
+   "ingress": "Hvor du sitter og jobber.",
+   "sporsmal": [
+    {
+     "kode": "ARB-12",
+     "tekst": "Jeg trives med å sitte hos kunden og jobbe",
+     "felt": "Jeg trives med å sitte hos kunden og jobbe",
+     "type": "likert",
+     "ekstra": [
+      "Jeg jobber fast for kunde fra P7",
+      "Jeg er mellom oppdrag"
+     ],
+     "feltId": "fldgK9vr4USoTHFyd"
+    },
+    {
+     "kode": "ARB-04",
+     "tekst": "Jeg trives med å sitte på P7 og jobbe",
+     "felt": "Jeg trives med å sitte på P7 og jobbe",
+     "type": "likert",
+     "feltId": "fldYFz36pXrt7LQjd"
+    },
+    {
+     "kode": "ARB-05",
+     "tekst": "Jeg opplever at det er greit å sitte på hjemmekontor (Fra Alv) når det passer",
+     "felt": "Jeg opplever at det er greit å sitte på hjemmekontor (Fra Alv) når det passer",
+     "type": "likert",
+     "feltId": "fldAzrEJwoSrqfZIT"
+    },
+    {
+     "kode": "ARB-06",
+     "tekst": "Jeg opplever at det er greit å sitte på hjemmekontor (Fra kundens side) når det passer",
+     "felt": "Jeg opplever at det er greit å sitte på hjemmekontor (Fra kundens side) når det passer",
+     "type": "likert",
+     "ekstra": [
+      "Jeg jobber fast fra hjemmekontor/P7 for kunde",
+      "Jeg er mellom oppdrag"
+     ],
+     "feltId": "fld31LkaH6sjwkGnV"
+    },
+    {
+     "kode": "ARB-02",
+     "tekst": "Jeg skulle ønske det var lagt opp til mer bruk av hjemmekontor",
+     "felt": "Jeg skulle ønske det var lagt opp til mer bruk av hjemmekontor",
+     "type": "likert",
+     "feltId": "fldv3JnU6rhxceXc0"
+    },
+    {
+     "kode": "ARB-13",
+     "tekst": "Kommentarer og/eller forslag til arbeidshverdagen",
+     "felt": "Kommentarer og/eller forslag til arbeidshverdagen",
+     "type": "tekst",
+     "feltId": "fldH1ga9bN6BsKCRC"
+    }
+   ]
+  },
+  {
+   "tittel": "KI",
+   "ingress": "Nytt i år. Hvordan du bruker KI, og hvordan Alv satser.",
+   "sporsmal": [
+    {
+     "kode": "KI-01",
+     "tekst": "Hvor ofte bruker du KI-verktøy i arbeidet for kunden du er hos? (Hvis du er mellom oppdrag tenker du på Alv som din kunde)",
+     "felt": "Hvor ofte bruker du KI-verktøy i arbeidet for kunden du er hos? (Hvis du er mellom oppdrag tenker du på Alv som din kunde)",
+     "type": "valg",
+     "valg": [
+      "Sjelden eller aldri",
+      "Noen ganger i måneden",
+      "Flere ganger i uka",
+      "Daglig",
+      "Mye hver dag"
+     ],
+     "feltId": "fldrr9SUj7P7vQ64q"
+    },
+    {
+     "kode": "KI-02",
+     "tekst": "KI-verktøy gjør meg mer effektiv i arbeidet mitt",
+     "felt": "KI-verktøy gjør meg mer effektiv i arbeidet mitt",
+     "type": "likert",
+     "feltId": "fldLJwKdXY2H3krGC"
+    },
+    {
+     "kode": "KI-03",
+     "tekst": "KI gjør jobben min mer interessant",
+     "felt": "KI gjør jobben min mer interessant",
+     "type": "likert",
+     "feltId": "fldSjyORVwAW2okpS"
+    },
+    {
+     "kode": "KI-04",
+     "tekst": "Jeg tror KI vil gjøre det vanskeligere å finne oppdrag til meg de neste to årene",
+     "felt": "Jeg tror KI vil gjøre det vanskeligere å finne oppdrag til meg de neste to årene",
+     "type": "likert",
+     "feltId": "fldZL8CZz3IMS56rv"
+    },
+    {
+     "kode": "KI-06",
+     "tekst": "Alv legger godt til rette for at jeg skal utvikle KI-kompetansen min",
+     "felt": "Alv legger godt til rette for at jeg skal utvikle KI-kompetansen min",
+     "type": "likert",
+     "feltId": "fldZSOiYZwXjVJMId"
+    },
+    {
+     "kode": "KI-05",
+     "tekst": "Hvordan vurderer du Alvs satsing på KI?",
+     "felt": "Hvordan vurderer du Alvs satsing på KI?",
+     "type": "valg",
+     "valg": [
+      "For lite",
+      "Omtrent passe",
+      "For mye",
+      "Vet ikke"
+     ],
+     "feltId": "fldSukpOFPwjO2paX"
+    },
+    {
+     "kode": "KI-08",
+     "tekst": "Hva bør Alv gjøre mer eller mindre av når det gjelder KI?",
+     "felt": "Hva bør Alv gjøre mer eller mindre av når det gjelder KI?",
+     "type": "tekst",
+     "feltId": "fldUoaDY9VoeD642e"
+    }
+   ]
+  },
+  {
+   "tittel": "Kultur og arenaer",
+   "ingress": "Kulturen og møteplassene våre.",
+   "sporsmal": [
+    {
+     "kode": "KUL-09",
+     "tekst": "Jeg liker kulturen i Alv",
+     "felt": "Jeg liker kulturen i Alv",
+     "type": "likert",
+     "feltId": "fldoC2UPWyt2KDcGQ"
+    },
+    {
+     "kode": "KUL-02",
+     "tekst": "Jeg er fornøyd med planleggingen og gjennomføringen av AlvFredag",
+     "felt": "Jeg er fornøyd med planleggingen og gjennomføringen av AlvFredag",
+     "type": "likert",
+     "feltId": "flditkXvKzLy6iECl"
+    },
+    {
+     "kode": "KUL-12",
+     "tekst": "Jeg er fornøyd med planleggingen og gjennomføringen av Fagtorsdag",
+     "felt": "Jeg er fornøyd med planleggingen og gjennomføringen av Fagtorsdag",
+     "type": "likert",
+     "feltId": "fld4Fl4FbwmFUO5Mh"
+    },
+    {
+     "kode": "KUL-18",
+     "tekst": "Jeg er fornøyd med planleggingen og gjennomføringen av AlvOps",
+     "felt": "Jeg er fornøyd med planleggingen og gjennomføringen av AlvOps",
+     "type": "likert",
+     "feltId": "fldyuPd5TrFxIA8ZF"
+    },
+    {
+     "kode": "KUL-16",
+     "tekst": "Jeg er fornøyd med planleggingen og gjennomføringen av Alv:Up",
+     "felt": "Jeg er fornøyd med planleggingen og gjennomføringen av Alv:Up",
+     "type": "likert",
+     "feltId": "fld7w3aTrFaNZJNFC"
+    },
+    {
+     "kode": "KUL-19",
+     "tekst": "Kommentarer og/eller forslag til kultur",
+     "felt": "Kommentarer og/eller forslag til kultur",
+     "type": "tekst",
+     "feltId": "fldws9AgPchJsQVuT"
+    }
+   ]
+  },
+  {
+   "tittel": "Trygghet og stemning",
+   "ingress": "Hvordan stemningen er, og hvor trygt det er å si fra.",
+   "sporsmal": [
+    {
+     "kode": "TRY-04",
+     "tekst": "Hvordan vil du beskrive stemningen i Alv for tiden?",
+     "felt": "Hvordan vil du beskrive stemningen i Alv for tiden?",
+     "type": "skala",
+     "verdier": {
+      "1": "1 - Veldig dårlig",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "6": "6",
+      "7": "7",
+      "8": "8",
+      "9": "9",
+      "10": "10 - Svært god"
+     },
+     "lav": "Veldig dårlig",
+     "hoy": "Svært god",
+     "ekstra": [
+      "Vil ikke svare eller vet ikke"
+     ],
+     "feltId": "fldxbTDtJiTPAHFI2"
+    },
+    {
+     "kode": "TRY-03",
+     "tekst": "Jeg opplever at folk i Alv respekterer og lytter til hverandre, også når vi er uenige",
+     "felt": "Jeg opplever at folk i Alv respekterer og lytter til hverandre, også når vi er uenige",
+     "type": "likert",
+     "feltId": "fld7i4abgjeM6a54d"
+    },
+    {
+     "kode": "TRY-02",
+     "tekst": "Det er trygt å innrømme feil i Alv",
+     "felt": "Det er trygt å innrømme feil i Alv",
+     "type": "likert",
+     "feltId": "fldhDTZMOsi9bmdzg"
+    },
+    {
+     "kode": "TRY-01",
+     "tekst": "Jeg føler at jeg kan si ifra om ting jeg er uenig i uten å være redd for negative konsekvenser",
+     "felt": "Jeg føler at jeg kan si ifra om ting jeg er uenig i uten å være redd for negative konsekvenser",
+     "type": "likert",
+     "feltId": "fldDV3O4BPcTFXzpU"
+    },
+    {
+     "kode": "TRY-05",
+     "tekst": "Hvis jeg sier fra om utfordringer eller problemer, føler jeg det blir tatt tak i raskt og bra.",
+     "felt": "Hvis jeg sier fra om utfordringer eller problemer, føler jeg det blir tatt tak i raskt og bra.",
+     "type": "likert",
+     "feltId": "fldy6gjztipR3NZ0L"
+    },
+    {
+     "kode": "TRY-06",
+     "tekst": "Kommentarer og/eller forslag til trygghet og stemning",
+     "felt": "Kommentarer og/eller forslag til trygghet og stemning",
+     "type": "tekst",
+     "feltId": "fldqm7HASCZJg4VOW"
+    }
+   ]
+  },
+  {
+   "tittel": "Lønn og goder",
+   "ingress": "Lønn, lønnsoppgjør og totalpakken.",
+   "sporsmal": [
+    {
+     "kode": "LON-07",
+     "tekst": "Hvor fornøyd, på en skala fra 1 - 10, er du med grunnlønna du har i Alv i dag?",
+     "felt": "Hvor fornøyd, på en skala fra 1 - 10, er du med grunnlønna du har i Alv i dag?",
+     "type": "skala",
+     "verdier": {
+      "1": "1 - Svært misfornøyd!",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "6": "6",
+      "7": "7",
+      "8": "8",
+      "9": "9",
+      "10": "10 - Superfornøyd!"
+     },
+     "lav": "Svært misfornøyd!",
+     "hoy": "Superfornøyd!",
+     "ekstra": [
+      "Vil ikke svare."
+     ],
+     "feltId": "fldMdt3PGG2tS26nW"
+    },
+    {
+     "kode": "LON-08",
+     "tekst": "Hvor fornøyd, på en skala fra 1 - 10, er du med lønnsoppgjøret 2026 personlig for deg?",
+     "felt": "Hvor fornøyd, på en skala fra 1 - 10, er du med siste lønnsoppgjør personlig for deg?",
+     "type": "skala",
+     "verdier": {
+      "1": "1 - Svært misfornøyd!",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "6": "6",
+      "7": "7",
+      "8": "8",
+      "9": "9",
+      "10": "10 - Superfornøyd!"
+     },
+     "lav": "Svært misfornøyd!",
+     "hoy": "Superfornøyd!",
+     "ekstra": [
+      "Vil ikke svare.",
+      "Er nyansatt (hadde ikke lønnsopgjør)"
+     ],
+     "feltId": "fldbXJsA1mD0zLlB4"
+    },
+    {
+     "kode": "LON-09",
+     "tekst": "Hvor fornøyd, på en skala fra 1 - 10, er du med den totale lønnspakken (Grunnlønn + overtid + overskuddsdeling + goder), du har i Alv i dag?",
+     "felt": "Hvor fornøyd, på en skala fra 1 - 10, er du med den totale lønnspakken (Grunnlønn + overtid + overskuddsdeling + goder), du har i Alv i dag?",
+     "type": "skala",
+     "verdier": {
+      "1": "1 - Svært misfornøyd!",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "6": "6",
+      "7": "7",
+      "8": "8",
+      "9": "9",
+      "10": "10 - Superfornøyd!"
+     },
+     "lav": "Svært misfornøyd!",
+     "hoy": "Superfornøyd!",
+     "ekstra": [
+      "Vil ikke svare."
+     ],
+     "feltId": "fldXMsBAvraQwZlOA"
+    },
+    {
+     "kode": "LON-03",
+     "tekst": "Totalpakken i Alv er konkurransedyktig",
+     "felt": "Totalpakken i Alv er konkurransedyktig",
+     "type": "likert",
+     "feltId": "fldpFMUnQQN7k6i1O"
+    },
+    {
+     "kode": "LON-02",
+     "tekst": "Vi burde kutte i goder og heller øke den direkte lønnen",
+     "felt": "Vi burde kutte i goder og heller øke den direkte lønnen",
+     "type": "likert",
+     "feltId": "fldMeVcbuqFYV5wCS"
+    },
+    {
+     "kode": "LON-11",
+     "tekst": "Har du forslag til andre goder som du mener ville truffet Alv godt, eller goder vi burde fjerne?",
+     "felt": "Har du forslag til andre goder som du mener ville truffet Alv godt, eller goder vi burde fjerne?",
+     "type": "tekst",
+     "feltId": "fldsKj6loXaf3Szbe"
+    }
+   ]
+  },
+  {
+   "tittel": "Rekruttering og merkevare",
+   "ingress": "Hvordan vi rekrutterer, og hvordan Alv fremstår utad.",
+   "sporsmal": [
+    {
+     "kode": "REK-03",
+     "tekst": "Rekrutteringsprosessen til Alv er bra",
+     "felt": "Rekrutteringsprosessen til Alv er bra",
+     "type": "likert",
+     "feltId": "fldEsH1Nou3xIMCh4"
+    },
+    {
+     "kode": "REK-04",
+     "tekst": "Vi skremmer bort dyktige kandidater gjennom rekrutteringsprosessen",
+     "felt": "Vi skremmer bort dyktige kandidater gjennom rekrutteringsprosessen",
+     "type": "likert",
+     "feltId": "fldlYfRzvWMxPY1SY"
+    },
+    {
+     "kode": "REK-05",
+     "tekst": "Vi burde senke kravene for hvem vi gir tilbud til",
+     "felt": "Vi burde senke kravene for hvem vi gir tilbud til",
+     "type": "likert",
+     "feltId": "fldOY33SA1bz316zN"
+    },
+    {
+     "kode": "MER-12",
+     "tekst": "Merkevaren Alv prøver å bygge eksternt gjenspeiler det selskapet gjør internt",
+     "felt": "Merkevaren Alv prøver å bygge eksternt gjenspeiler det selskapet gjør internt",
+     "type": "likert",
+     "feltId": "fldQK3AVEVn73ubSx"
+    },
+    {
+     "kode": "MER-14",
+     "tekst": "Merkevaren Alv er blitt sterkere det siste året",
+     "felt": "Merkevaren Alv er blitt sterkere det siste året",
+     "type": "likert",
+     "feltId": "fldiLEMHxVyH60p7U"
+    },
+    {
+     "kode": "MER-18",
+     "tekst": "Det var riktig av Alv å avslutte videoserien",
+     "felt": "Det var riktig av Alv å avslutte videoserien",
+     "type": "likert",
+     "feltId": "fldIfzw6xoARb6CS6"
+    },
+    {
+     "kode": "MER-17",
+     "tekst": "Kommentarer og/eller forslag til rekruttering og merkevare",
+     "felt": "Kommentarer og/eller forslag til rekruttering og merkevare",
+     "type": "tekst",
+     "feltId": "fldIMSWi3BfevqLxc"
+    }
+   ]
+  },
+  {
+   "tittel": "Egenvurdering",
+   "ingress": "Din egen vurdering av det du bidrar med, på en skala fra 1 til 10.",
+   "sporsmal": [
+    {
+     "kode": "EGE-01",
+     "tekst": "Hvor stor verdi synes du selv at du gir til kunden du er hos?",
+     "felt": "Hvor stor verdi synes du selv at du gir til kunden du er hos?",
+     "type": "tall",
+     "feltId": "fldUDyrZ3NoRky8mn"
+    },
+    {
+     "kode": "EGE-02",
+     "tekst": "Hvor stor verdi tror du kunden din mener du gir?",
+     "felt": "Hvor stor verdi tror du kunden din mener du gir?",
+     "type": "tall",
+     "feltId": "fldmzXCrXUIBDZtMK"
+    },
+    {
+     "kode": "EGE-03",
+     "tekst": "Hvordan bidrar du internt i Alv totalt sett?",
+     "felt": "Hvordan bidrar du internt i Alv totalt sett?",
+     "type": "tall",
+     "feltId": "fldwYUwLPNZR2SNsR"
+    },
+    {
+     "kode": "EGE-06",
+     "tekst": "Hvordan bidrar du på intern fag- og kompetanseutvikling?",
+     "felt": "Hvordan bidrar du på intern fag- og kompetanseutvikling?",
+     "type": "tall",
+     "feltId": "fldg1Lm9QTNwZzEoM"
+    },
+    {
+     "kode": "KI-07",
+     "tekst": "Hvordan bidrar du til at Alv blir bedre på KI?",
+     "felt": "Hvordan bidrar du til at Alv blir bedre på KI?",
+     "type": "tall",
+     "feltId": "fld7HC99Hy5QDtkhB"
+    },
+    {
+     "kode": "EGE-08",
+     "tekst": "Hvordan bidrar du på internprosjekter?",
+     "felt": "Hvordan bidrar du på internprosjekter?",
+     "type": "tall",
+     "feltId": "fldGPFuaYOM6o9PMe"
+    },
+    {
+     "kode": "EGE-09",
+     "tekst": "Hvordan bidrar du sosialt?",
+     "felt": "Hvordan bidrar du sosialt?",
+     "type": "tall",
+     "feltId": "fldLDRfMB8JPKfYX4"
+    },
+    {
+     "kode": "EGE-04",
+     "tekst": "Hvordan bidrar du på salg, inkludert mersalg?",
+     "felt": "Hvordan bidrar du på salg, inkludert mersalg?",
+     "type": "tall",
+     "feltId": "fldfPnAmk5BBT3jqV"
+    },
+    {
+     "kode": "EGE-05",
+     "tekst": "Hvordan bidrar du på rekruttering?",
+     "felt": "Hvordan bidrar du på rekruttering?",
+     "type": "tall",
+     "feltId": "fldDoaMJcCL2PYc2C"
+    },
+    {
+     "kode": "EGE-07",
+     "tekst": "Hvordan bidrar du til ekstern synlighet?",
+     "felt": "Hvordan bidrar du til ekstern synlighet?",
+     "type": "tall",
+     "feltId": "fld8sxif1JpJrWzyA"
+    },
+    {
+     "kode": "EGE-10",
+     "tekst": "Hvordan vil du totalt rangere verdien du gir til Alv?",
+     "felt": "Hvordan vil du totalt rangere verdien du gir til Alv?",
+     "type": "tall",
+     "feltId": "fld5lVICtoMkKoKzF"
+    },
+    {
+     "kode": "EGE-11",
+     "tekst": "Kommentarer til egenvurderingen",
+     "felt": "Kommentarer til egenvurderingen",
+     "type": "tekst",
+     "feltId": "fldrNqZkDR6uWeF3g"
+    }
+   ]
+  },
+  {
+   "tittel": "Til slutt",
+   "ingress": "To åpne spørsmål før du leverer.",
+   "sporsmal": [
+    {
+     "kode": "APN-05",
+     "tekst": "Hva bør Alv begynne med, og hva bør vi slutte med?",
+     "felt": "Hva bør Alv begynne med, og hva bør vi slutte med?",
+     "type": "tekst",
+     "feltId": "fld5NZSaf3Wd9mKlv"
+    },
+    {
+     "kode": "APN-01",
+     "tekst": "Kommentarer og/eller forslag til Alv generelt",
+     "felt": "Kommentarer og/eller forslag til Alv generelt",
+     "type": "tekst",
+     "feltId": "fld1roTKtzgdy6c0J"
+    }
+   ]
+  }
+ ],
+ "airtable": {
+  "runde": "fldKoyUSrC6QfPp8t",
+  "mottatt": "fldIePV83hIvquSsd"
+ }
+}

@@ -1,0 +1,60 @@
+# Svarside for Alvs halvårsundersøkelse.
+# Før første utrulling: legg de to hemmelighetene i appens vault (se README).
+# Dev-klyngen har egne tider for prøvekjøring i alv-dev.app.yaml.
+name: halvaar
+
+# Telemetri er slått av med vilje. Automatisk sporing kan fange opp innholdet i forespørsler,
+# og svarene skal ikke ligge noe annet sted enn i køen og i Airtable.
+telemetry:
+  enabled: false
+
+components:
+  db:
+    type: database
+    engine: postgres
+    config:
+      storage: { size: "1Gi" }
+
+  hemmeligheter:
+    type: secret
+    config:
+      data:
+        airtable-token: { key: halvaar-airtable-token }
+        slack-token: { key: halvaar-slack-bot-token }
+
+  # Hvem som slipper inn på /admin. Medlemmer må ha logget inn på plattformen minst én gang.
+  eiere:
+    type: group
+    config:
+      members: [ marcus@alv.no ]
+
+  web:
+    type: container
+    image:
+      repository: ghcr.io/alv-no/halvaar-web
+      tag: "1.0.0"
+    config:
+      # Nøyaktig én instans. Overføringen til Airtable forutsetter at bare én prosess sender om gangen.
+      replicas: 1
+      strategy: Recreate
+      expose:
+        - { port: 8080, type: http, path: / }                        # krever innlogging (standard)
+        - { port: 8080, type: http, path: /admin, roles: ["eiere"] } # bare gruppen over
+      env:
+        - { name: APNER, value: "2027-01-04T07:00:00+01:00" }
+        - { name: FRIST, value: "2027-01-15T23:59:59+01:00" }
+        - { name: ADMIN_EPOST, value: "marcus@alv.no" }
+        - { name: AIRTABLE_BASE_ID, value: "appvRwebWS9hIJXeU" }
+        - { name: AIRTABLE_TABELL, value: "tblR9nczrCc7KAHyF" }
+        - { name: AIRTABLE_TOKEN, from: hemmeligheter, key: airtable-token }
+        - { name: SLACK_BOT_TOKEN, from: hemmeligheter, key: slack-token }
+        - { name: DB_HOST, from: db, key: host }
+        - { name: DB_PORT, from: db, key: port }
+        - { name: DB_USER, from: db, key: user }
+        - { name: DB_PASSWORD, from: db, key: password }
+        - { name: DB_NAME, from: db, key: database }
+      livenessProbe:  { httpGet: { path: /healthz, port: 8080 }, initialDelaySeconds: 10, periodSeconds: 15 }
+      readinessProbe: { httpGet: { path: /readyz,  port: 8080 }, initialDelaySeconds: 5,  periodSeconds: 10 }
+      resources:
+        requests: { cpu: 50m, memory: 128Mi }
+        limits:   { memory: 256Mi }

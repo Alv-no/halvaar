@@ -1,0 +1,46 @@
+# Bygger web-imaget fra main, med versjon fra web/VERSION, og oppdaterer image.tag i .halvnais/app.yaml.
+# Følger malen i Halvnais-dokumentasjonen (docs/halvnais-app/ci), med testkjøring lagt til foran bygget.
+name: Bygg web
+on:
+  push:
+    branches: [main]
+    paths: ['web/**']
+  workflow_dispatch:
+permissions:
+  contents: write
+  packages: write
+jobs:
+  bygg:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - name: Test
+        working-directory: web
+        run: npm ci && npm test
+      - name: Versjon og imagenavn
+        id: v
+        run: |
+          echo "versjon=$(cat web/VERSION)" >> "$GITHUB_OUTPUT"
+          echo "image=ghcr.io/$(echo '${{ github.repository }}' | tr '[:upper:]' '[:lower:]')-web" >> "$GITHUB_OUTPUT"
+      - uses: docker/login-action@v3
+        with: { registry: ghcr.io, username: '${{ github.actor }}', password: '${{ secrets.GITHUB_TOKEN }}' }
+      - uses: docker/setup-qemu-action@v3
+      - uses: docker/setup-buildx-action@v3
+      - uses: docker/build-push-action@v6
+        with:
+          context: web
+          platforms: linux/amd64,linux/arm64
+          push: true
+          tags: ${{ steps.v.outputs.image }}:${{ steps.v.outputs.versjon }}
+      - name: Oppdater image.tag
+        env: { VERSJON: '${{ steps.v.outputs.versjon }}' }
+        run: |
+          yq -i '.components.web.image.tag = strenv(VERSJON)' .halvnais/app.yaml
+          if ! git diff --quiet; then
+            git config user.name "github-actions"
+            git config user.email "github-actions@users.noreply.github.com"
+            git commit -am "web ${VERSJON}"
+            git push
+          fi

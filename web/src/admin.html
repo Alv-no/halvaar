@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Halvårsundersøkelsen · admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;400;500;600&family=Libre+Baskerville:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--fjordbla:#243F4D;--alvesand:#F8F1E3;--dis:#D8DCD3;--skogmose:#9DAC86;--solheim-ink:#9A7126;--ink-soft:#4A6271;--tegl:#B34B36;
+  --glass:rgba(36,63,77,.045);--glass-line:rgba(36,63,77,.14);
+  --serif:"Libre Baskerville",Georgia,serif;--sans:"League Spartan","Avenir Next","Segoe UI",system-ui,sans-serif}
+*{box-sizing:border-box}
+body{margin:0;background:var(--alvesand);color:var(--fjordbla);font-family:var(--sans);font-size:17px;line-height:1.4}
+main{max-width:860px;margin:0 auto;padding:28px 20px 80px}
+h1,h2{font-family:var(--serif);font-weight:400;margin:0}
+h1{font-size:34px;margin-bottom:6px}
+h2{font-size:23px;margin-bottom:8px}
+p{margin:0 0 10px}
+.eyebrow{font-size:14.5px;letter-spacing:.04em;color:var(--solheim-ink);margin-bottom:6px}
+section{background:var(--glass);border:1px solid var(--glass-line);border-radius:14px;padding:18px 18px 16px;margin-top:16px}
+.tall{display:flex;gap:12px;flex-wrap:wrap;margin:6px 0 10px}
+.tall div{background:var(--dis);border-radius:14px;padding:12px 16px;min-width:150px}
+.tall b{display:block;font-family:var(--serif);font-weight:400;font-size:30px}
+.tall span{font-size:14.5px;color:var(--ink-soft)}
+button{font:inherit;cursor:pointer;min-height:40px;padding:7px 16px;border-radius:6px;border:1px solid var(--fjordbla);background:var(--fjordbla);color:var(--alvesand)}
+button.lys{background:transparent;color:var(--fjordbla)}
+button.liten{min-height:30px;padding:3px 10px;font-size:14.5px}
+button[disabled]{opacity:.5;cursor:default}
+textarea,input[type=text]{width:100%;font:inherit;font-size:16px;color:var(--fjordbla);background:rgba(248,241,227,.7);border:1px solid var(--glass-line);border-radius:6px;padding:8px 10px}
+textarea{min-height:110px;resize:vertical}
+table{width:100%;border-collapse:collapse;font-size:15.5px;margin:8px 0}
+th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--glass-line)}
+th{font-weight:500;color:var(--ink-soft);font-size:14px}
+.melding{margin-top:10px;font-size:15.5px;color:var(--ink-soft);min-height:1.4em}
+.melding.feil{color:var(--tegl)}
+.hjelp{font-size:14.5px;color:var(--ink-soft)}
+.rad{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:10px}
+</style>
+</head>
+<body>
+<main>
+  <div class="eyebrow" id="runde">Halvårsundersøkelsen</div>
+  <h1>Admin</h1>
+  <p class="hjelp">Denne siden viser aldri hvem som har levert, og aldri hva noen har svart.</p>
+
+  <section>
+    <h2>Status</h2>
+    <div class="tall">
+      <div><b id="levert">–</b><span>har levert</span></div>
+      <div><b id="inviterte">–</b><span>er invitert</span></div>
+      <div><b id="venter">–</b><span>svar venter på overføring</span></div>
+      <div><b id="overfort">–</b><span>svar er i Airtable</span></div>
+    </div>
+    <p class="hjelp" id="fase"></p>
+    <p class="hjelp" id="oppsett"></p>
+  </section>
+
+  <section>
+    <h2>Påminnelse</h2>
+    <p class="hjelp">Sendes som direktemelding på Slack til alle inviterte som ikke har levert og ikke er unntatt nedenfor.
+      Lenken til undersøkelsen legges til nederst i meldingen. Du får ikke vite hvem eller hvor mange som får den.
+      Rett før utsending overføres en bolk med svar til Airtable.</p>
+    <textarea id="tekst"></textarea>
+    <div class="rad">
+      <button id="purr" type="button">Godkjenn og send påminnelser</button>
+      <button id="test" type="button" class="lys">Send en test til meg</button>
+    </div>
+    <div class="melding" id="purrMelding"></div>
+    <p class="hjelp" id="purringer"></p>
+  </section>
+
+  <section>
+    <h2>Inviterte</h2>
+    <p class="hjelp">«Ikke purr» holder en person utenfor påminnelsene, uansett om vedkommende har levert eller ikke.</p>
+    <table>
+      <thead><tr><th>Navn</th><th>E-post</th><th>Slack</th><th>Ikke purr</th><th></th></tr></thead>
+      <tbody id="liste"></tbody>
+    </table>
+    <div class="rad">
+      <button id="slackSjekk" type="button" class="lys">Sjekk Slack-kobling for alle</button>
+    </div>
+    <div class="melding" id="listeMelding"></div>
+    <p style="margin-top:14px">Legg til flere, én per linje, med semikolon mellom navn, e-post og eventuell Slack-ID.</p>
+    <textarea id="nye" placeholder="Ola Nordmann;ola@alv.no;U012ABCDEF"></textarea>
+    <div class="rad"><button id="leggTil" type="button">Legg til</button></div>
+  </section>
+</main>
+<script>
+const $ = id => document.getElementById(id);
+const el = (tag, attrs = {}, ...barn) => {
+  const n = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs)) { if (k.startsWith('on')) n.addEventListener(k.slice(2), v); else if (v !== false && v != null) n.setAttribute(k, v === true ? '' : v); }
+  for (const b of barn.flat()) if (b != null) n.append(b.nodeType ? b : document.createTextNode(b));
+  return n;
+};
+async function api(sti, kropp) {
+  const r = await fetch('/admin/api/' + sti, kropp === undefined ? {} : {method: 'POST', headers: {'Content-Type': 'application/json', 'X-Halvaar': '1'}, body: JSON.stringify(kropp)});
+  const data = await r.json().catch(() => ({}));
+  if (!r.ok) throw new Error(data.feil || 'status ' + r.status);
+  return data;
+}
+const dato = iso => new Intl.DateTimeFormat('nb-NO', {dateStyle: 'full', timeStyle: 'short', timeZone: 'Europe/Oslo'}).format(new Date(iso));
+const vis = (id, tekst, feil) => { $(id).textContent = tekst; $(id).classList.toggle('feil', !!feil); };
+let tekstSatt = false;
+
+async function hentStatus() {
+  const s = await api('status');
+  $('runde').textContent = 'Halvårsundersøkelsen · ' + s.runde;
+  for (const k of ['levert', 'inviterte', 'venter', 'overfort']) $(k).textContent = s[k];
+  $('fase').textContent = ({'ikke-apnet': 'Ikke åpnet ennå. Åpner ' + dato(s.apner) + '.', apen: 'Åpen. Fristen er ' + dato(s.frist) + '.', stengt: 'Stengt. Fristen var ' + dato(s.frist) + '.'})[s.fase];
+  $('oppsett').textContent = [s.airtableKlar ? null : 'Airtable-token mangler, så ingenting overføres.', s.slackKlar ? null : 'Slack-token mangler, så påminnelser kan ikke sendes.'].filter(Boolean).join(' ');
+  $('purringer').textContent = s.purringer.length ? 'Påminnelser er sendt ' + s.purringer.map(dato).join(' og ') + '.' : 'Ingen påminnelser er sendt.';
+  $('purr').disabled = s.fase !== 'apen' || !s.slackKlar;
+  $('test').disabled = !s.slackKlar;
+  $('slackSjekk').disabled = !s.slackKlar;
+  if (!tekstSatt) { $('tekst').value = s.standardTekst; tekstSatt = true; }
+}
+async function hentListe(sjekk) {
+  const liste = await api('inviterte');
+  const funnet = sjekk ? new Map(sjekk.map(x => [x.epost, x.funnet])) : null;
+  $('liste').replaceChildren(...liste.map(p => el('tr', {},
+    el('td', {}, p.navn), el('td', {}, p.epost),
+    el('td', {}, funnet ? (funnet.get(p.epost) ? 'Funnet' : 'Ikke funnet') : (p.slackId ? 'Har ID' : 'Slås opp ved utsending')),
+    el('td', {}, el('input', {type: 'checkbox', checked: p.unntatt, 'aria-label': 'Ikke purr ' + p.navn,
+      onchange: async e => { try { await api('unntatt', {epost: p.epost, unntatt: e.target.checked}); } catch (f) { vis('listeMelding', 'Kunne ikke lagre: ' + f.message, true); e.target.checked = !e.target.checked; } }})),
+    el('td', {}, el('button', {type: 'button', class: 'lys liten', onclick: async () => {
+      if (!confirm('Fjerne ' + p.navn + ' fra listen over inviterte?')) return;
+      try { await api('fjern', {epost: p.epost}); await oppdater(); } catch (f) { vis('listeMelding', 'Kunne ikke fjerne: ' + f.message, true); } }}, 'Fjern')))));
+}
+const oppdater = () => Promise.all([hentStatus(), hentListe()]);
+
+$('purr').addEventListener('click', async () => {
+  if (!confirm('Sende påminnelse på Slack til alle som ikke har levert og ikke er unntatt?')) return;
+  $('purr').disabled = true; vis('purrMelding', 'Sender …');
+  try {
+    const r = await api('purr', {tekst: $('tekst').value});
+    vis('purrMelding', 'Påminnelsene er sendt.' + (r.noenFeilet ? ' Minst én kunne ikke leveres. Bruk «Sjekk Slack-kobling for alle» for å finne ut hvem som mangler i Slack.' : '')
+      + (r.overforingFeilet ? ' Overføringen til Airtable feilet og prøves igjen automatisk.' : ''), r.noenFeilet || r.overforingFeilet);
+  } catch (f) { vis('purrMelding', 'Påminnelsene ble ikke sendt: ' + f.message, true); }
+  await hentStatus();
+});
+$('test').addEventListener('click', async () => {
+  vis('purrMelding', 'Sender test …');
+  try { await api('slack-test', {}); vis('purrMelding', 'Testen er sendt til deg på Slack.'); } catch (f) { vis('purrMelding', 'Testen feilet: ' + f.message, true); }
+});
+$('slackSjekk').addEventListener('click', async () => {
+  vis('listeMelding', 'Sjekker …');
+  try {
+    const sjekk = await api('slack-sjekk', {});
+    await hentListe(sjekk);
+    const mangler = sjekk.filter(x => !x.funnet).length;
+    vis('listeMelding', mangler ? mangler + ' av de inviterte ble ikke funnet i Slack. Legg inn Slack-ID for dem.' : 'Alle inviterte ble funnet i Slack.', mangler > 0);
+  } catch (f) { vis('listeMelding', 'Sjekken feilet: ' + f.message, true); }
+});
+$('leggTil').addEventListener('click', async () => {
+  const liste = $('nye').value.split('\n').map(l => l.split(';').map(x => x.trim())).filter(d => d.length >= 2 && d[1]).map(([navn, epost, slackId]) => ({navn, epost, slackId}));
+  if (!liste.length) { vis('listeMelding', 'Fant ingen linjer på formen navn;e-post.', true); return; }
+  try { const r = await api('inviterte', {liste}); $('nye').value = ''; vis('listeMelding', r.lagtTil + ' lagt til eller oppdatert.'); await oppdater(); }
+  catch (f) { vis('listeMelding', 'Kunne ikke legge til: ' + f.message, true); }
+});
+oppdater().catch(f => vis('listeMelding', 'Kunne ikke hente data: ' + f.message, true));
+setInterval(() => hentStatus().catch(() => {}), 30000);
+</script>
+</body>
+</html>

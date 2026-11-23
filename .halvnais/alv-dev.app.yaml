@@ -1,0 +1,19 @@
+# Bare for dev-klyngen (alv-dev): prøvekjøring før den ekte runden.
+# Lister erstattes i sin helhet av plattformen, så hele env-listen står her. Bare APNER og FRIST er annerledes enn i app.yaml.
+# Svar som leveres på dev havner i den ekte Airtable-tabellen og må slettes etter prøven.
+components:
+  web:
+    config:
+      env:
+        - { name: APNER, value: "2026-11-23T00:00:00+01:00" }
+        - { name: FRIST, value: "2026-12-04T23:59:59+01:00" }
+        - { name: ADMIN_EPOST, value: "marcus@alv.no" }
+        - { name: AIRTABLE_BASE_ID, value: "appvRwebWS9hIJXeU" }
+        - { name: AIRTABLE_TABELL, value: "tblR9nczrCc7KAHyF" }
+        - { name: AIRTABLE_TOKEN, from: hemmeligheter, key: airtable-token }
+        - { name: SLACK_BOT_TOKEN, from: hemmeligheter, key: slack-token }
+        - { name: DB_HOST, from: db, key: host }
+        - { name: DB_PORT, from: db, key: port }
+        - { name: DB_USER, from: db, key: user }
+        - { name: DB_PASSWORD, from: db, key: password }
+        - { name: DB_NAME, from: db, key: database }
