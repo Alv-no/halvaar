@@ -30,7 +30,7 @@ components:
     type: container
     image:
       repository: ghcr.io/alv-no/halvaar-web
-      tag: "1.0.0"
+      tag: "1.0.1"
     config:
       # Nøyaktig én instans. Overføringen til Airtable forutsetter at bare én prosess sender om gangen.
       replicas: 1
