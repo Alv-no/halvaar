@@ -124,6 +124,11 @@ test('slack-test og slack-sjekk', async t => {
   const sjekk = (await admin('slack-sjekk', {})).data;
   assert.deepEqual(sjekk.map(x => [x.epost, x.funnet]), [['person1@alv.no', false], ['person2@alv.no', true], ['person3@alv.no', true], ['person4@alv.no', true]]);
   assert.equal((await admin('inviterte')).data[2].slackId, 'U_OPPSLAG_3', 'ID-en som ble funnet, lagres');
+  // Når Slack avviser oppslaget, skal admin få se hvorfor.
+  m.slack.finnBruker = async () => { throw new Error('Slack: missing_scope'); };
+  const test = await admin('slack-test', {});
+  assert.deepEqual([test.status, test.data.feil], [502, 'oppslag feilet. Slack: missing_scope']);
+  assert.equal((await admin('slack-sjekk', {})).data[0].feil, 'Slack: missing_scope');
 });
 
 test('etter fristen overføres alt, og Airtable får verken navn eller e-post', async t => {
@@ -178,6 +183,8 @@ test('Slack-klienten slår opp på e-post og sender direktemelding', async () =>
   assert.equal(kall[1].valg.headers.Authorization, 'Bearer xoxb-1');
   svar['users.lookupByEmail'] = { ok: false, error: 'users_not_found' };
   assert.equal(await slack.finnBruker('ukjent@alv.no'), null);
+  svar['users.lookupByEmail'] = { ok: false, error: 'missing_scope' };
+  await assert.rejects(slack.finnBruker('ola@alv.no'), /missing_scope/, 'manglende tillatelse er ikke det samme som «finnes ikke»');
   svar['chat.postMessage'] = { ok: false, error: 'channel_not_found' };
   await assert.rejects(slack.sendDm('U0', 'Hei'), /channel_not_found/);
 });

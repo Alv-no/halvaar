@@ -151,7 +151,8 @@ $('slackSjekk').addEventListener('click', async () => {
     const sjekk = await api('slack-sjekk', {});
     await hentListe(sjekk);
     const mangler = sjekk.filter(x => !x.funnet).length;
-    vis('listeMelding', mangler ? mangler + ' av de inviterte ble ikke funnet i Slack. Legg inn Slack-ID for dem.' : 'Alle inviterte ble funnet i Slack.', mangler > 0);
+    const arsak = sjekk.find(x => x.feil)?.feil;
+    vis('listeMelding', arsak ? 'Oppslag i Slack feilet (' + arsak + '). Sjekk botens tillatelser.' : mangler ? mangler + ' av de inviterte ble ikke funnet i Slack. Legg inn Slack-ID for dem.' : 'Alle inviterte ble funnet i Slack.', Boolean(arsak) || mangler > 0);
   } catch (f) { vis('listeMelding', 'Sjekken feilet: ' + f.message, true); }
 });
 $('leggTil').addEventListener('click', async () => {

@@ -14,10 +14,13 @@ export function lagSlack({ token, fetch = globalThis.fetch }) {
   }
   return {
     konfigurert: Boolean(token),
-    // Slår opp Slack-brukeren fra e-postadressen. Returnerer bruker-ID eller null.
+    // Slår opp Slack-brukeren fra e-postadressen. Returnerer bruker-ID, eller null hvis adressen ikke finnes i Slack.
+    // Andre feil (manglende tillatelse, ugyldig token) kastes, slik at de ikke forveksles med «finnes ikke».
     async finnBruker(epost) {
       const r = await kall('users.lookupByEmail', { query: { email: epost } });
-      return r.ok ? r.user.id : null;
+      if (r.ok) return r.user.id;
+      if (r.error === 'users_not_found') return null;
+      throw new Error('Slack: ' + r.error);
     },
     async sendDm(brukerId, tekst) {
       const r = await kall('chat.postMessage', { body: { channel: brukerId, text: tekst } });

@@ -130,18 +130,21 @@ export function lagApp({ db, konfig, airtable, slack, naa = () => new Date(), lo
       if (!slack.konfigurert) throw new HttpFeil(409, 'slack-mangler');
       const ut = [];
       for (const person of await lagring.listInviterte(db, runde)) {
-        let funnet = false;
-        try { funnet = Boolean(await finnSlackId(person)); } catch {}
-        ut.push({ epost: person.epost, navn: person.navn, funnet });
+        let funnet = false, feil = '';
+        try { funnet = Boolean(await finnSlackId(person)); } catch (f) { feil = f.message; }
+        ut.push({ epost: person.epost, navn: person.navn, funnet, feil });
       }
       json(res, 200, ut);
     },
     'POST /admin/api/slack-test': async (req, res, epost) => {
       await lesJson(req);
       if (!slack.konfigurert) throw new HttpFeil(409, 'slack-mangler');
-      const id = await slack.finnBruker(epost);
+      // Feilkoden fra Slack vises til admin. Den sier noe om boten, aldri noe om svarene.
+      let id;
+      try { id = await slack.finnBruker(epost); } catch (feil) { throw new HttpFeil(502, 'oppslag feilet. ' + feil.message); }
       if (!id) throw new HttpFeil(404, 'fant-ikke-deg-i-slack');
-      await slack.sendDm(id, 'Test fra svarsiden for halvårsundersøkelsen. Slack-koblingen virker.');
+      try { await slack.sendDm(id, 'Test fra svarsiden for halvårsundersøkelsen. Slack-koblingen virker.'); }
+      catch (feil) { throw new HttpFeil(502, 'sending feilet. ' + feil.message); }
       json(res, 200, { ok: true });
     },
     // Sender påminnelser etter at admin har godkjent teksten. Svaret sier aldri hvem eller hvor mange
