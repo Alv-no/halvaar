@@ -111,8 +111,17 @@ test('purring: riktige mottakere, bolk overføres først, og svaret røper ingen
 
 test('purring virker bare mens undersøkelsen er åpen', async t => {
   const m = await startApp(); t.after(m.stopp);
+  // Før åpning: ingen påminnelser kan sendes, selv om listen over inviterte er lagt inn.
+  m.klokke.naa = new Date('2027-01-03T12:00:00+01:00');
+  assert.equal((await m.kall('/admin/api/purr', { epost: 'sjef@alv.no', kropp: { tekst: 'hei' } })).status, 409);
+  assert.equal(m.slack.sendt.length, 0);
+  // Etter fristen: heller ingen.
   m.klokke.naa = new Date('2027-01-16T08:00:00+01:00');
   assert.equal((await m.kall('/admin/api/purr', { epost: 'sjef@alv.no', kropp: { tekst: 'hei' } })).status, 409);
+  assert.equal(m.slack.sendt.length, 0);
+  // Å legge til inviterte eller sjekke Slack-koblingen sender aldri noe.
+  await m.kall('/admin/api/inviterte', { epost: 'sjef@alv.no', kropp: { liste: [{ navn: 'Ny', epost: 'ny@alv.no', slackId: 'U9' }] } });
+  await m.kall('/admin/api/slack-sjekk', { epost: 'sjef@alv.no', kropp: {} });
   assert.equal(m.slack.sendt.length, 0);
 });
 
