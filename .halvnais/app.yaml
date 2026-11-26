@@ -51,6 +51,7 @@ components:
         - {name: DB_USER, from: db, key: user}
         - {name: DB_PASSWORD, from: db, key: password}
         - {name: DB_NAME, from: db, key: database}
+        - {name: DB_SSL, value: "true"} # plattformens Postgres avviser ukrypterte tilkoblinger
       livenessProbe: {httpGet: {path: /healthz, port: 8080}, initialDelaySeconds: 10, periodSeconds: 15}
       readinessProbe: {httpGet: {path: /readyz, port: 8080}, initialDelaySeconds: 5, periodSeconds: 10}
       resources:
