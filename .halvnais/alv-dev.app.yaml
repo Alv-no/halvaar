@@ -4,6 +4,10 @@
 components:
   web:
     config:
+      # På dev står /admin uten plattformens gruppesperre, fordi gruppemedlemskapet ikke slo inn (26.11.2026).
+      # Appen slipper uansett bare adressene i ADMIN_EPOST inn på /admin. I app.yaml (prod) står sperren fortsatt.
+      expose:
+        - { port: 8080, type: http, path: / }
       env:
         - { name: APNER, value: "2026-11-23T00:00:00+01:00" }
         - { name: FRIST, value: "2026-12-04T23:59:59+01:00" }

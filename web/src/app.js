@@ -72,7 +72,8 @@ export function lagApp({ db, konfig, airtable, slack, naa = () => new Date(), lo
   /* ---------- Svarsiden ---------- */
   async function meg(req, res, epost) {
     const invitert = await lagring.finnInvitert(db, runde, epost);
-    const navn = invitert?.navn || String(req.headers['x-auth-request-user'] ?? '') || epost;
+    // Plattformens X-Auth-Request-User er en intern ID, ikke et navn. Derfor vises e-postadressen for dem som ikke står på listen.
+    const navn = invitert?.navn || epost;
     json(res, 200, { navn, status: !invitert ? 'ikke-invitert' : invitert.harLevert ? 'levert' : fase() });
   }
 
