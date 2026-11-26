@@ -10,7 +10,7 @@ components:
         - { port: 8080, type: http, path: / }
       env:
         - { name: APNER, value: "2026-11-23T00:00:00+01:00" }
-        - { name: FRIST, value: "2026-12-04T23:59:59+01:00" }
+        - { name: FRIST, value: "2026-11-26T12:00:00+01:00" } # satt tilbake i tid for å prøve overføringen til Airtable
         - { name: ADMIN_EPOST, value: "marcus@alv.no" }
         - { name: AIRTABLE_BASE_ID, value: "appvRwebWS9hIJXeU" }
         - { name: AIRTABLE_TABELL, value: "tblR9nczrCc7KAHyF" }
